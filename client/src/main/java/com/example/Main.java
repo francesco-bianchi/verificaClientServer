@@ -66,7 +66,7 @@ public class Main {
                         if(messBiglietti.equals("OK")){
                             System.out.println("Biglietti acquistati");
                         }
-                        else if(messBiglietti.equals("OK")){
+                        else if(messBiglietti.equals("KO")){
                             System.out.println("Biglietti non disponibili");
                         }
                     }

@@ -69,7 +69,7 @@ public class GestoreServer extends Thread {
                     if (s.equals("gold")) {
                         out.writeBytes("a\n"); //accettata
                         String t = in.readLine();
-                        if (ticketGold.getTicket() - Integer.parseInt(t) > 0) {
+                        if (ticketGold.getTicket() - Integer.parseInt(t) >= 0) {
                             ticketGold.setTicket(ticketGold.getTicket() - Integer.parseInt(t));
                             System.out.println("Rimanenti Gold: " +ticketGold.getTicket());
                             out.writeBytes("OK\n");
@@ -79,7 +79,7 @@ public class GestoreServer extends Thread {
                     } else if (s.equals("pit")) {
                         out.writeBytes("a\n"); //accettata
                         String t = in.readLine();
-                        if (ticketPit.getTicket() - Integer.parseInt(t) > 0) {
+                        if (ticketPit.getTicket() - Integer.parseInt(t) >= 0) {
                             ticketPit.setTicket(ticketPit.getTicket() - Integer.parseInt(t));
                             System.out.println("Rimanenti Pit: " +ticketPit.getTicket());
                             out.writeBytes("OK\n");
@@ -89,13 +89,16 @@ public class GestoreServer extends Thread {
                     } else if (s.equals("parterre")) {
                         out.writeBytes("a\n"); //accettata
                         String t = in.readLine();
-                        if (ticketParterre.getTicket() - Integer.parseInt(t) > 0) {
+                        if (ticketParterre.getTicket() - Integer.parseInt(t) >= 0) {
                             ticketParterre.setTicket(ticketParterre.getTicket() - Integer.parseInt(t));
                             System.out.println("Rimanenti Parterre: " +ticketParterre.getTicket());
                             out.writeBytes("OK\n");
                         } else {
                             out.writeBytes("KO\n");
                         }
+                    }
+                    else{
+                        out.writeBytes("KO\n");
                     }
 
                 } else if (messaggioClient.equals("quit")) {
@@ -107,6 +110,5 @@ public class GestoreServer extends Thread {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        System.out.println("Client disconnesso");
     }
 }
